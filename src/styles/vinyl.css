@@ -1,0 +1,42 @@
+
+.player-container {
+    user-select: none;
+    position: relative;
+    background: white;
+    width: 380px;
+    margin: 0 auto;
+}
+
+.player {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.player-element svg{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.player-element-lp {
+    /*transform: perspective(2000px);*/
+    transform: rotateZ(0deg);
+    transition: 1s;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    padding: 40px;
+    width: 85%;
+    height: auto;
+    display: inline-block;
+    box-sizing: border-box;
+
+}
+
+.player-element-tonearm {
+    position: absolute;
+    top: calc(calc(20px * 2) - 29%);
+    right: calc(calc(20px * 3) - 43%);
+    width: 90%;
+    height: auto;
+}

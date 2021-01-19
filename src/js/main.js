@@ -5,13 +5,21 @@ import { explicitParam} from './modules/view/filter.js'
 $(function () {
     requestCountryCodes();
     const searchForm = $('form.search')
-    // searchForm.find('input, select').on('input', function(event){
-    //     if (searchForm){}
+    
+    // searchForm.on('submit', function (event) {
+    //     event.preventDefault()
+    //     let searchSettings = {};
+    //     $(this).find('input, select').each(function(){
+    //         searchSettings[$(this).attr('name')] = $(this).val()
+    //     });
+    //     searchSettings = explicitParam(searchSettings);
+    //     search(searchSettings)
     // })
-    searchForm.on('submit', function (event) {
-        event.preventDefault()
+
+    console.log(searchForm.find('input, select'));
+    searchForm.find('input, select').on('input', function(){
         let searchSettings = {};
-        $(this).find('input, select').each(function(){
+        searchForm.find('input, select').each(function(){
             searchSettings[$(this).attr('name')] = $(this).val()
         });
         searchSettings = explicitParam(searchSettings);

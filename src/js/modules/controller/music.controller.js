@@ -22,6 +22,7 @@ export function query (
     $.get(settings).done(response => {
         response.results = response.results.map(mapToModel)
         done(response);
+        console.log(response);
     })
 }
 
@@ -40,3 +41,5 @@ function mapToModel (item) {
         }
     }
 }
+
+

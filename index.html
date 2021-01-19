@@ -26,8 +26,9 @@
                 </select>
                 <div class='search-filters'>
                     <select name="country" id="country-filter"></select>
-                    <input type = "checkbox" name="explicit" id="explicit-filter">
-                    <input type = "number" name="limit" id="limit-filter">
+                    <label for="explicit-filter">Explicit content</label>
+                    <input type = "checkbox" name="explicit" id="explicit-filter" checked>
+                    <input type = "number" name="limit" id="limit-filter" min="10" max="100" value="50">
                 </div>
             </form>
         </section>

@@ -1,10 +1,8 @@
 import { search } from './modules/store/music.store.js'
-
-search({
-    term: 'peter+johnson',
-})
+import { requestCountryCodes } from './modules/controller/music.controller.js'
 
 $(function () {
+    requestCountryCodes();
     const searchForm = $('form.search')
     searchForm.find('input, select').on('input', function(event){
         console.log(event)

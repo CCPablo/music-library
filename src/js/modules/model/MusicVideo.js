@@ -1,5 +1,5 @@
 export class MusicVideo {
-    constructor (track) {
+    constructor(track) {
         this.id = track.trackId
         this.cover = track.artworkUrl60
         this.name = track.trackName

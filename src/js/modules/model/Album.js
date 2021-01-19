@@ -1,5 +1,5 @@
 export class Album {
-    constructor (album) {
+    constructor(album) {
         this.id = album.collectionId
         this.cover = album.artworkUrl60
         this.name = album.collectionName
@@ -11,6 +11,6 @@ export class Album {
     }
 
     get html() {
-        return $('<div>').text(this.name);
+        return $('<div>').text(this.name)
     }
 }

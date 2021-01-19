@@ -14,11 +14,12 @@ export class Song {
 
     get html() {
         return $('<div>')
+        .addClass('item-global')
         .append(this.htmlTitle)
         .append(this.htmlCover)
         .append(this.htmlPrice)
         .append(this.htmlSample)
-        //.append(this.htmlDetails)
+
         
     }
 
@@ -45,13 +46,13 @@ export class Song {
                     .addClass('flip-cover-front')
                     .append($('<img>')
                         .attr('src', this.cover)
-                    )
+                        )
                     )
                 .append($('<div>')
-                .addClass('flip-cover-back')
-                .append(this.htmlDetails)
+                    .addClass('flip-cover-back')
+                    .append(this.htmlDetails)
+                    )
                 )
-            )
     }
 
     get htmlPrice (){

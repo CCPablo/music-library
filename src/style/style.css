@@ -15,7 +15,9 @@ button:focus {
     box-sizing: border-box;
 }
 
-
-.header {
-
+.item-global {
+    display:flex;
+    max-width: 20em;
 }
+
+

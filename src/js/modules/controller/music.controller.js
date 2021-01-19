@@ -1,4 +1,7 @@
 import { Song } from '../model/Song.js'
+import { Album } from '../model/Album.js'
+import { Artist } from '../model/Artist.js'
+import { MusicVideo } from '../model/MusicVideo.js'
 
 export function query (
     done,
@@ -23,8 +26,14 @@ export function query (
 }
 
 function mapToModel (item) {
-    if (item.kind === 'song') {
-        return new Song(item)
+    if (item.wrapperType === 'track' && item.kind === 'song') {
+        return new Song(item)}
+    else if(item.wrapperType === 'collection' && item.collectionType === 'Album') {
+        return new Album(item)}
+    else if (item.wrapperType === 'artist' && item.artistType === 'Artist') {
+        return new Artist(item)}
+    else if (item.wrapperType === 'track' && item.kind === 'music-video') {
+        return new MusicVideo(item)
     } else {
         return {
             html: ''

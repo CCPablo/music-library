@@ -7,6 +7,6 @@ export class Artist {
     }
 
     get html() {
-        return $('<div>').text('item')
+        return $('<div>').text(this.name)
     }
 }

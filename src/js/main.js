@@ -1,22 +1,24 @@
 import { search } from './modules/store/music.store.js'
-
-search({
-    term: 'peter+johnson',
-})
+import { requestCountryCodes } from './modules/controller/contries.controller.js'
 
 $(function () {
+    requestCountryCodes();
     const searchForm = $('form.search')
-    searchForm.find('input, select').on('input', function(event){
-        console.log(event)
-        //if (searchForm){}
-    })
-    searchForm.on('submit', function (event) {
-        event.preventDefault()
-        const searchSettings = {};
-        $(this).find('input, select').each(function(){
+
+    searchForm.find('input, select').on('input', function(){
+        let searchSettings = {};
+        searchForm.find('input, select').each(function(){
             searchSettings[$(this).attr('name')] = $(this).val()
         });
-        console.log(searchSettings)
+        setExplicit(searchSettings);
         search(searchSettings)
     })
+
+    function setExplicit (searchSettings) {
+        if ($("#explicit-filter")[0].checked){
+            searchSettings.explicit="yes";
+        }else{
+            searchSettings.explicit="no";
+        }
+    }
 })

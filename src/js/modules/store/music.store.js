@@ -3,10 +3,10 @@ import { renderResults } from '../view/render.js'
 
 let results = []
 
-export function search (queryParams) {
+export function search(queryParams) {
     query(saveResults, queryParams)
 
-    function saveResults (response) {
+    function saveResults(response) {
         results = response.results
         renderResults(results)
     }

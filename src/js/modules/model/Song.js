@@ -25,7 +25,7 @@ export class Song {
 
     get htmlTitle() {
         return $('<h2>').addClass('item-title').text(this.name).css({
-            fontFamily: '"Boogaloo", cursive',
+            fontFamily: 'Helvetica, cursive',
         })
     }
 

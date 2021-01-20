@@ -19,7 +19,7 @@ export class Artist {
             .addClass('item-title-artist')
             .text(this.name)
             .css({
-                fontFamily: '"Boogaloo", cursive',
+                fontFamily: 'Helvetica, cursive',
             })
     }
 
@@ -28,7 +28,7 @@ export class Artist {
             .addClass('item-genre')
             .text('Genre: ' + this.genre)
             .css({
-                fontFamily: '"Boogaloo", cursive',
+                fontFamily: 'Helvetica, cursive',
             })
     }
 
@@ -40,6 +40,7 @@ export class Artist {
             .text('Link to profile')
         )
     }
+    
 
 
 

@@ -2,10 +2,13 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
-    background-color: white;
-    color: black;
+    background-color:#fffefe;
+    color: #000000b5;
     flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+
 
 button:focus { 
     outline-style: none; 
@@ -15,6 +18,13 @@ button:focus {
     box-sizing: border-box;
 }
 
+.content-wrapper {
+    display: flex;
+}
+
+.display-wrapper, .player-wrapper {
+    flex:0 0 50%;
+}
 .results{
     display:flex;
     flex-wrap: wrap;
@@ -34,7 +44,9 @@ button:focus {
 
 .item-title {
     font-size: 15px;
-    height: 5vh;
+    height: 8vh;
+    color: black;
+    padding-bottom: 0.3em;
 }
 
 .item-buttons {
@@ -104,27 +116,34 @@ button:focus {
 
 .item-artist-link > button:hover{
     transform: scale(1.1);
-    box-shadow: 1em 1em white;
+    box-shadow: 1em 1em rgb(189, 187, 187);
 }
 
 .item-global-artist {
     display:flex;
-    width:80%;
+    width:90%;
     flex-direction: column;
     margin: 1em 1em;
 }
 
 .item-title-artist {
     font-size: 18px;
-    height: 3vh;
+    color: black;
+    height: 7vh;
+    border: 0.2em solid grey;
+
+    border-radius: 0.4em;
+    width: 100%;
+    vertical-align: middle;
 }
 
-.content-wrapper {
-    display: flex;
+.item-genre {
+    color: black;
+    margin-left: 0.5em;
+    width: 60%;
+
 }
 
-.display-wrapper, .player-wrapper {
-    flex:0 0 50%;
-}
+
 
 

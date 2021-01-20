@@ -141,9 +141,37 @@ button:focus {
     color: black;
     margin-left: 0.5em;
     width: 60%;
+    font-size: 12px
 
 }
 
+/*MUSIC VIDEO */
 
+.item-global-artist {
+    display:flex;
+    width:90%;
+    flex-direction: column;
+    margin: 1em 1em;
+}
 
+.item-details-video {
+    background-color: #a6a6a6ad;
+    color: #212121;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    align-items: center;
+    padding: 0.1 0.2;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 1em;
+
+}
+
+.music-video{
+    text-align: center;
+    justify-content: center;
+
+}
 

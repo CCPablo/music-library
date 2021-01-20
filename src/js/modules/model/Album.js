@@ -19,6 +19,7 @@ export class Album {
             .append(this.htmlTitle)
             .append(this.htmlCover)
             .append(this.htmlPrice)
+            .append(this.htmlFavorite)
     }
 
     get htmlTitle() {

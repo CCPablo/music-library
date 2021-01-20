@@ -1,8 +1,11 @@
+import { getResults } from "../store/music.store.js"
+
 let $results = $('.results')
 let $countryFilter = $('#country-filter')
 
-export function renderResults (results) {
-    $results.html(results.map(result => result.html))
+export function renderResults () {
+    console.log(getResults())
+    $results.html(getResults().map(result => result.html))
 }
 
 export function renderContriesOptions (countryCodes) {

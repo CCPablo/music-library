@@ -1,12 +1,11 @@
 import { Lp } from '../components/Lp.js'
 import { toggleFavourite } from '../store/favourites.store.js'
-import { checkIfFavourite } from '../store/favourites.store.js'
-
+import { isFavourite } from '../store/favourites.store.js'
 
 export class Song {
     constructor (track) {
         this.id = track.trackId
-        this.cover= track.artworkUrl100
+        this.cover = track.artworkUrl100
         this.name = track.trackName
         this.price = track.trackPrice
         this.millisDuration = track.trackTimeMillis
@@ -16,7 +15,7 @@ export class Song {
         this.audioSample = track.previewUrl
         this.itunesLink = track.trackViewUrl
         this.vinyl = new Lp(this.cover)
-        this.topology = "Song"
+        this.type = 'Song'
     }
 
     get html () {
@@ -105,16 +104,23 @@ export class Song {
             .append($('<button>').text('sample'))
     }
 
-    get htmlFavorite() {
-        let booleanFavourite = checkIfFavourite(this.id);
-        console.log(booleanFavourite);
-        return $('<a>')
+    get htmlFavorite () {
+        console.log('eo')
+        return $('<div>')
             .addClass('item-favorite')
-            .on('click', () =>{
-                toggleFavourite(this);
+            .on('click', () => {
+                toggleFavourite(this)
             })
-            .attr('favourite', booleanFavourite)
-            .append($('<button>').text('star'))
+            .append(
+                $('<img>')
+                .attr('width', '25px')
+                .attr(
+                    'src',
+                    isFavourite(this.id)
+                        ? '/src/assets/images/star_fav_true.png'
+                        : '/src/assets/images/star_fav.png'
+                )
+            )
     }
 
     get htmlDetails () {

@@ -2,40 +2,41 @@ import { Song } from '../model/Song.js'
 import { Album } from '../model/Album.js'
 import { Artist } from '../model/Artist.js'
 import { MusicVideo } from '../model/MusicVideo.js'
+import { renderResults } from '../view/render.js'
 
-let favourites = [];
+let favourites = []
 
-$(function (){
-    getFavouritesFromLS();
+$(function () {
+    getFavouritesFromLS()
 })
 
-function getFavouritesFromLS() {
-    if (localStorage.getItem("favourites", favourites)!=null) {
-        JSON.parse(localStorage.getItem("favourites")).map(function (element) {
-            favourites.push(reInstance(element));
-        });
+function getFavouritesFromLS () {
+    if (localStorage.getItem('favourites', favourites) != null) {
+        JSON.parse(localStorage.getItem('favourites')).map(function (element) {
+            favourites.push(reInstance(element))
+        })
     }
 }
 
 function reInstance (itemFromLS) {
-    if (itemFromLS.topology==="Song") {
-        itemFromLS = convertSong(itemFromLS);
-        return new Song (itemFromLS);
-    }else if (itemFromLS.topology==="Album"){
-        itemFromLS = convertAlbum(itemFromLS);
-        return new Album (itemFromLS);
-    }else if (itemFromLS.topology==="Artist"){
-        itemFromLS = convertArtist(itemFromLS);
-        return new Artist (itemFromLS);
-    }else if (itemFromLS.topology==="MusicVideo"){
-        itemFromLS = convertMusicVideo(itemFromLS);
-        return new MusicVideo (itemFromLS);
-    }else {
-        alert("Error: topology failed");
+    if (itemFromLS.type === 'Song') {
+        itemFromLS = convertSong(itemFromLS)
+        return new Song(itemFromLS)
+    } else if (itemFromLS.type === 'Album') {
+        itemFromLS = convertAlbum(itemFromLS)
+        return new Album(itemFromLS)
+    } else if (itemFromLS.type === 'Artist') {
+        itemFromLS = convertArtist(itemFromLS)
+        return new Artist(itemFromLS)
+    } else if (itemFromLS.type === 'MusicVideo') {
+        itemFromLS = convertMusicVideo(itemFromLS)
+        return new MusicVideo(itemFromLS)
+    } else {
+        alert('Error: type failed')
     }
 }
 
-function convertSong(input) {
+function convertSong (input) {
     return {
         trackId: input.id,
         artworkUrl100: input.cover,
@@ -70,7 +71,6 @@ function convertArtist (input) {
         artistName: input.name,
         primaryGenreName: input.genre,
         artistLinkUrl: input.itunesLink,
-
     }
 }
 
@@ -89,35 +89,26 @@ function convertMusicVideo (input) {
     }
 }
 
-export function toggleFavourite (newFav) {
-    if (newFav instanceof Song) {
-        newFav.topology = 'Song';
-    }else if ($ewFav instanceof Album) {
-        newFav[topology] = 'Album';
-    }else if (newFav instanceof Artist) {
-        newFav[topology] = 'Aratist';
-    }else if (newFav instanceof MusicVideo) {
-        newFav[topology] = 'MusicVideo';
-    }else{
-        alert("Error: tipology not found");
+export function toggleFavourite (item) {
+    if (!isFavourite(item.id)) {
+        addFavourite({ ...item })
+    } else {
+        removeFavourite(item)
     }
-    favourites.push(newFav);
-    localStorage.setItem("favourites", JSON.stringify(favourites));
+    localStorage.setItem('favourites', JSON.stringify(favourites))
+    renderResults()
 }
 
-// export function checkIfFavourite(query) {
-//     favourites.forEach((element) => {
-//         console.log(element.id, query.id);
-//         if (element.id===query.id) {  
-//             return true     
-//         }else{
-//             return false
-//         }
-//     });
-// }
+function addFavourite (item) {
+    console.log(item)
+    delete item['vinyl']
+    favourites.push(item)
+}
 
-export function checkIfFavourite(id) {
-    console.log(id,favourites.map(favourite => favourite.id));
-    console.log(favourites.indexOf(favourite => favourite.id == id));
-    return favourites.indexOf(favourite => favourite.id == id)!=-1;
+function removeFavourite (item) {
+    favourites = favourites.filter(fav => fav.id !== item.id)
+}
+
+export function isFavourite (id) {
+    return !!favourites.find(favourite => favourite.id == id)
 }

@@ -100,3 +100,10 @@
     font-size: 18px;
     height: 3vh;
 }
+
+.item-favorite {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    cursor: pointer;
+}

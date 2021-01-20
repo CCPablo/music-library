@@ -10,7 +10,7 @@ export class MusicVideo {
         this.releaseDate = new Date(track.releaseDate)
         this.videoSample = track.previewUrl
         this.itunesLink = track.trackViewUrl
-        this.topology = "MusicVideo"
+        this.type = "MusicVideo"
     }
 
     get html () {

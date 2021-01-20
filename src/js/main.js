@@ -5,6 +5,8 @@ $(function () {
     requestCountryCodes();
     const searchForm = $('form.search')
 
+    $("#add-filters-btn").on("click", showOptionalFilters)
+
     searchForm.find('input, select').on('input', function(){
         let searchSettings = {};
         searchForm.find('input, select').each(function(){
@@ -22,3 +24,19 @@ $(function () {
         }
     }
 })
+
+function showOptionalFilters () {
+    $("#add-filters-btn").off("click", showOptionalFilters);
+    $("#add-filters-btn").addClass("hide-me");
+    $(".optional-filters").removeClass("hide-me");
+    $("#hide-filters-btn").removeClass("hide-me");
+    $("#hide-filters-btn").on("click", hideOptionalFilters)
+}
+
+function hideOptionalFilters () {
+    $("#hide-filters-btn").off("click", hideOptionalFilters)
+    $("#add-filters-btn").on("click", showOptionalFilters);
+    $("#add-filters-btn").removeClass("hide-me");
+    $(".optional-filters").addClass("hide-me");
+    $("#hide-filters-btn").addClass("hide-me");
+}

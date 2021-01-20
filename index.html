@@ -13,6 +13,9 @@
     <script type="modules" defer src="/src/js/modules"></script>
     <link rel="stylesheet" href="./src/style/style.css">
     <link rel="stylesheet" href="./src/style/flip.cover.css">
+    <link rel="stylesheet" href="./src/css/search-wrapper.css">
+
+
 </head>
 
 <body>
@@ -22,21 +25,50 @@
     <main class="content">
         <section class="search-wrapper">
             <form class="search">
-                <input required id="term" name="term" type="text">
-                <select required id="entity" name="entity">
-                    <option value="song">Canciones</option>
-                    <option value="album">Albumes</option>
-                    <option value="musicArtist">Artistas</option>
-                    <option value="musicVideo">Videoclips</option>
-                </select>
-                <div class='search-filters'>
-                    <select name="country" id="country-filter"></select>
-                    <label for="explicit-filter">Explicit content</label>
-                    <input type = "checkbox" name="explicit" id="explicit-filter" checked>
-                    <input type = "number" name="limit" id="limit-filter" min="10" max="100" value="50">
+                <div class="required-filters">
+
+                    <div class="box">
+                        <select required id="entity" name="entity">
+                            <option value="song">Canciones</option>
+                            <option value="album">Albumes</option>
+                            <option value="musicArtist">Artistas</option>
+                            <option value="musicVideo">Videoclips</option>
+                        </select>
+                    </div>
+
+                    <input required id="term" name="term" type="text" placeholder="Plug in baby">
+                </div>
+                
+                <div class='optional-filters hide-me'>
+                    <div class="box">
+                        <select name="country" id="country-filter"></select>
+                    </div>
+                    
+                    <div>
+                        <div id="switch-wrapper" class="switch-wrapper">
+                            <input type = "checkbox" name="explicit" id="explicit-filter" class="switch-input" checked>
+                            <label for="explicit-filter" class="switch-label"></label>
+                        </div>
+                        <label for="switch-wrapper">Explicit content</label>
+                    </div>
+                    
+                    <input type = "number" name="limit" id="limit-filter" min="10" max="200" value="50">
                 </div>
             </form>
+
+            <button id="add-filters-btn" class="button">
+                show filter
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+            </button>
+            <button id="hide-filters-btn" class="button hide-me">
+                hide filters
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+            </button>
+
         </section>
+
         <section class="results">
 
         </section>

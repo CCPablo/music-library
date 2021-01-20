@@ -1,7 +1,7 @@
 import { Lp } from '../components/Lp.js'
 
 export class Song {
-    constructor(track) {
+    constructor (track) {
         this.id = track.trackId
         this.cover = track.artworkUrl100
         this.name = track.trackName
@@ -15,7 +15,7 @@ export class Song {
         this.vinyl = new Lp(this.cover)
     }
 
-    get html() {
+    get html () {
         return $('<div>')
             .addClass('item-global')
             .append(this.htmlTitle)
@@ -23,13 +23,16 @@ export class Song {
             .append(this.htmlButtons)
     }
 
-    get htmlTitle() {
-        return $('<h2>').addClass('item-title').text(this.name).css({
-            fontFamily: '"Boogaloo", cursive',
-        })
+    get htmlTitle () {
+        return $('<h2>')
+            .addClass('item-title')
+            .text(this.name)
+            .css({
+                fontFamily: '"Boogaloo", cursive',
+            })
     }
 
-    get htmlCover() {
+    get htmlCover () {
         return $('<div>')
             .addClass('flip-cover')
             .css({
@@ -47,7 +50,29 @@ export class Song {
                                 backgroundSize: 'cover',
                             })
                     )
-                    .append(this.vinyl.htmlLp.addClass('vinyl'))
+                    .append(
+                        this.vinyl.htmlLp
+                            .addClass('vinyl vinyl-inside')
+                            .draggable({
+                                revert: 'invalid',
+                                opacity: '0.4',
+                                start: function (event, ui) {
+                                    ui.helper.css(
+                                        'transform',
+                                        'translate(18px, 18px)'
+                                    )
+                                },
+                                helper: () => {
+                                    console.log(this)
+                                    return $(this.vinyl.htmlLp)
+                                        .clone()
+                                        .data('id', this.id)
+                                        .removeClass('vinyl-inside')
+                                        .css('transition', 'none')
+                                },
+                                cursor: 'move',
+                            })
+                    )
                     .append(
                         $('<div>')
                             .addClass('flip-cover-back')
@@ -56,25 +81,27 @@ export class Song {
             )
     }
 
-    get htmlPrice() {
+    get htmlPrice () {
         return $('<a>')
             .addClass('item-price')
             .attr('href', this.itunesLink)
             .append($('<button>').text(this.price + '$'))
     }
 
-    get htmlArtist() {
-        return $('<h3>').addClass('item-artist').text(this.artistName)
+    get htmlArtist () {
+        return $('<h3>')
+            .addClass('item-artist')
+            .text(this.artistName)
     }
 
-    get htmlSample() {
+    get htmlSample () {
         return $('<a>')
             .addClass('item-sample')
             .attr('href', this.audioSample)
             .append($('<button>').text('sample'))
     }
 
-    get htmlFavorite() {
+    get htmlFavorite () {
         return $('<a>')
             .addClass('item-favorite')
             .on('click', function () {
@@ -84,7 +111,7 @@ export class Song {
             .append($('<button>').text('star'))
     }
 
-    get htmlDetails() {
+    get htmlDetails () {
         let min = Math.floor((this.millisDuration / 1000 / 60) << 0)
         let seconds = Math.floor((this.millisDuration / 1000) % 60)
         return $('<div>')
@@ -111,7 +138,7 @@ export class Song {
             )
     }
 
-    get htmlButtons() {
+    get htmlButtons () {
         return $('<div>')
             .addClass('item-buttons')
             .append(this.htmlSample)

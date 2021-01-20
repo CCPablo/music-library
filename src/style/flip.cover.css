@@ -2,22 +2,23 @@
 	position:absolute;
 	height:100%;
 	width:100%;
+  padding: 0;
+}
+
+.vinyl-inside {
 	z-index: -10;
-	display: flex;
 	-webkit-transition: all .25s ease-out;
   transition: all .25s ease-out;
-  padding: 0;
-	
 }
+
 .flip-cover {
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #f1f1f1;
-    perspective: 1000px; 
-    border-radius: 50%;
-    z-index: 3;
-  }
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px; 
+  border-radius: 50%;
+  z-index: 3;
+}
   
   .flip-cover-inner {
     position: relative;
@@ -30,17 +31,19 @@
     box-shadow: 0 7px 16px #aaa
   }
 
+  /*
   .flip-cover:active .flip-cover-inner {
     transform: rotateY(180deg);
   }
-  .flip-cover:hover .vinyl {
-    -webkit-transform:  translateX(150px) rotate(195deg);
-	-moz-transform:  translateX(150px) rotate(195deg);
-	-ms-transform:  translateX(150px) rotate(195deg);
-	-o-transform:  translateX(150px) rotate(195deg);
-	transform:  translateX(150px) rotate(195deg);
+  */
+
+  .flip-cover:hover .vinyl-inside {
+    -webkit-transform:  translateX(100px) rotate(195deg);
+    -moz-transform:  translateX(100px) rotate(195deg);
+    -ms-transform:  translateX(100px) rotate(195deg);
+    -o-transform:  translateX(100px) rotate(195deg);
+    transform:  translateX(100px) rotate(195deg);
   }
-  
 
   .flip-cover-front, .flip-cover-back {
     position: absolute;

@@ -4,15 +4,6 @@ export class Lp {
     constructor (
         image = 'https://cms-assets.tutsplus.com/uploads/users/114/posts/34296/image/Final-image.jpg'
     ) {
-        this.emptyLp = $(`<div class="player-element player-element-lp">
-            <svg version="1.1" viewBox="0 0 799 799" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><metadata><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata><defs><filter id="filter2302" style="color-interpolation-filters:sRGB"><feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="6"/><feSpecularLighting lighting-color="rgb(255,255,255)" in="blur" result="specular" specularExponent="25" surfaceScale="10"><feDistantLight azimuth="235" elevation="45"/></feSpecularLighting><feComposite in="specular" in2="SourceGraphic" k2="1" k3="1" operator="arithmetic" result="composite1"/><feComposite in="composite1" in2="SourceAlpha" operator="in" result="composite2"/></filter><filter id="filter3183" style="color-interpolation-filters:sRGB"><feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="3.71257"/><feSpecularLighting lighting-color="rgb(255,255,255)" in="blur" result="specular" specularConstant="0.553892" specularExponent="25" surfaceScale="10"><feDistantLight azimuth="39" elevation="50"/></feSpecularLighting><feComposite in="specular" in2="SourceGraphic" k2="1" k3="1" operator="arithmetic" result="composite1"/><feComposite in="composite1" in2="SourceAlpha" operator="in" result="composite2"/></filter></defs>
-                <path d="m399 0c-220.4 0-399 178.6-399 399s178.6 399 399 399 399-178.6 399-399-178.6-399-399-399zm0 408.8c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8-4.4 9.8-9.8 9.8z" fill="#181819" style="filter:url(#filter2302)"/>
-                <g transform="matrix(.77917 0 0 .77917 88.109 88.109)" fill="#181819" stroke="#060606" stroke-width="1.9252">
-                    <path d="m399 199c-110.5 0-200 89.5-200 200s89.5 200 200 200 200-89.5 200-200-89.5-200-200-200zm-0.8 214.8c-8.6 0-15.5-6.9-15.5-15.5s6.9-15.5 15.5-15.5 15.5 6.9 15.5 15.5-6.9 15.5-15.5 15.5z" style="filter:url(#filter3183);stroke-width:.12834"/>
-                </g>
-            </svg>
-        </div>`)
-
         this.htmlLp = $(`<div class="player-element player-element-lp">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 799 799" xml:space="preserve">
                 <path fill="#181819" d="M399,0C178.6,0,0,178.6,0,399s178.6,399,399,399s399-178.6,399-399S619.4,0,399,0z M399,408.8c-5.4,0-9.8-4.4-9.8-9.8s4.4-9.8,9.8-9.8s9.8,4.4,9.8,9.8S404.4,408.8,399,408.8z"/>

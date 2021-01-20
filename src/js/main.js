@@ -2,10 +2,15 @@ import { search } from './modules/store/music.store.js'
 import { Vinyl } from './modules/components/Vinyl.js'
 import { requestCountryCodes } from './modules/controller/contries.controller.js'
 
-const vinyl = new Vinyl();
-$(document.body).append(vinyl.html);
+const vinyl = new Vinyl({
+    artworkUrl100: 'image',
+    audioSample: 'sample'
+});
+
 
 $(function () {
+    $('.player-wrapper').append(vinyl.html);
+
     requestCountryCodes();
     const searchForm = $('form.search')
 

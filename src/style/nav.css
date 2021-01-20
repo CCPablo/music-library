@@ -1,10 +1,19 @@
-.display-wrapper > nav {
+.content-wrapper {
     display: flex;
-    justify-content: space-around;
 }
 
 .display-wrapper {
-    width: 50%;
+    flex: 0 0 60%;
+}
+
+.player-wrapper {
+    flex: 0 0 40%;
+    padding: 50px;
+}
+
+.display-wrapper > nav {
+    display: flex;
+    justify-content: space-around;
 }
 
 .hidden {

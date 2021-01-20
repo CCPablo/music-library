@@ -11,3 +11,7 @@ export function search(queryParams) {
         renderResults(results)
     }
 }
+
+export function getResultById(id) {
+    return results.find(result => result.id == id);
+}

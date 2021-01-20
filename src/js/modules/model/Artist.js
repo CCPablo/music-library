@@ -7,6 +7,41 @@ export class Artist {
     }
 
     get html() {
-        return $('<div>').text(this.name)
+        return $('<div>')
+            .addClass('item-global-artist')
+            .append(this.htmlTitle)
+            .append(this.htmlGenre)
+            .append(this.htmlArtistLink)
     }
+
+    get htmlTitle () {
+        return $('<h2>')
+            .addClass('item-title-artist')
+            .text(this.name)
+            .css({
+                fontFamily: '"Boogaloo", cursive',
+            })
+    }
+
+    get htmlGenre () {
+        return $('<h3>')
+            .addClass('item-genre')
+            .text('Genre: ' + this.genre)
+            .css({
+                fontFamily: '"Boogaloo", cursive',
+            })
+    }
+
+    get htmlArtistLink (){
+        return $('<a>')
+        .addClass('item-artist-link')
+        .attr("href", this.itunesLink)
+        .append($('<button>')
+            .text('Link to profile')
+        )
+    }
+
+
+
+
 }

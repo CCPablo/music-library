@@ -90,3 +90,30 @@ button:focus {
 
 }
 
+/*ARTIST*/
+.item-artist-link > button {
+    margin : 1em 0;
+    border-radius: 1em 0.5em 1em 0.2em;
+    width: 4.5em;
+    color: white;
+    background-color: black;
+    border: 0.2em solid white;
+    transition: 300ms;
+}
+
+.item-artist-link > button:hover{
+    transform: scale(1.1);
+    box-shadow: 1em 1em white;
+}
+
+.item-global-artist {
+    display:flex;
+    width:80%;
+    flex-direction: column;
+    margin: 1em 1em;
+}
+
+.item-title-artist {
+    font-size: 18px;
+    height: 3vh;
+}

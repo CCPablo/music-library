@@ -11,6 +11,7 @@ export class Album {
         this.releaseDate = new Date(album.releaseDate)
         this.genre = album.primaryGenreName
         this.vinyl = new Lp(this.cover)
+        this.topology = "Album"
     }
 
     get html() {

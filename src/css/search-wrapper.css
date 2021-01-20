@@ -185,3 +185,7 @@
 input{
     padding: 12px;
 }
+
+[favourite="True"]{
+    background-color: aqua;
+}

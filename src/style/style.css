@@ -2,8 +2,8 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
-    background-color: black;
-    color: aliceblue;
+    background-color: white;
+    color: black;
     flex-direction: column;
 }
 
@@ -21,7 +21,7 @@ button:focus {
     align-items: baseline;
     align-content: center;
     justify-content: space-around;
-    width: 90vw
+    width: 50vw
 }
 
 
@@ -47,8 +47,8 @@ button:focus {
     margin : 1em 0;
     border-radius: 0.5em 2em 0.2em 2em;
     width: 4.5em;
-    color: white;
-    background-color: black;
+    color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.083);
     border: 0.2em solid white;
     transition: 300ms;
 
@@ -56,22 +56,23 @@ button:focus {
 
 .item-sample > button:hover{
     transform: scale(1.1);
-    box-shadow: -1em 1em white;
+    box-shadow: -1em 1em   rgba(226, 203, 203, 0.398);
 }
 
 .item-price > button {
     margin : 1em 0;
     border-radius: 2em 0.5em 2em 0.2em;
     width: 4.5em;
-    color: white;
-    background-color: black;
+    color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.076);
     border: 0.2em solid white;
     transition: 300ms;
 }
 
 .item-price > button:hover{
     transform: scale(1.1);
-    box-shadow: 1em 1em white;
+    box-shadow: 1em 1em rgba(226, 203, 203, 0.398);
+
 }
 
 .item-details {
@@ -95,8 +96,8 @@ button:focus {
     margin : 1em 0;
     border-radius: 1em 0.5em 1em 0.2em;
     width: 4.5em;
-    color: white;
-    background-color: black;
+    color: rgb(10, 10, 10);
+    background-color: rgba(0, 0, 0, 0.118);
     border: 0.2em solid white;
     transition: 300ms;
 }

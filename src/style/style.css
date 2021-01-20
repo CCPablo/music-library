@@ -118,3 +118,13 @@ button:focus {
     font-size: 18px;
     height: 3vh;
 }
+
+.content-wrapper {
+    display: flex;
+}
+
+.display-wrapper, .player-wrapper {
+    flex:0 0 50%;
+}
+
+

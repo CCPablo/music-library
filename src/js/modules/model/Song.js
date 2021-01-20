@@ -116,5 +116,6 @@ export class Song {
             .addClass('item-buttons')
             .append(this.htmlSample)
             .append(this.htmlPrice)
+            .append(this.htmlFavorite)
     }
 }

@@ -23,8 +23,8 @@ export class Album {
     }
 
     get htmlTitle() {
-        return $('<h2>').addClass('item-title').text(this.name + ' album').css({
-            fontFamily: 'Helvetica, cursive',
+        return $('<h2>').addClass('item-title').text(this.name + ' (album)').css({
+            fontFamily: 'Helvetica, cursive'
         })
     }
 
@@ -79,6 +79,7 @@ export class Album {
             .text('Genre: ' + this.genre)
             .css({
                 fontFamily: 'Helvetica, cursive',
+                textAlign: 'center'
             })
     }
 

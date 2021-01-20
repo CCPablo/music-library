@@ -40,13 +40,13 @@ button:focus {
     width:10em;
     flex-direction: column;
     margin: 1em 1em;
+
 }
 
 .item-title {
     font-size: 15px;
-    height: 8vh;
     color: black;
-    padding-bottom: 0.3em;
+    text-align: center;
 }
 
 .item-buttons {
@@ -88,7 +88,7 @@ button:focus {
 }
 
 .item-details {
-    background-color: rgb(248, 132, 24);
+    background-color: rgb(109, 109, 109);
     color: white;
     border-radius: 50%;
     vertical-align: middle;
@@ -99,8 +99,8 @@ button:focus {
     padding: 4em 0 0 0;
     overflow: hidden;
     font-weight: bold;
-    font-size: 12px
-
+    font-size: 12px;
+    font-family: 'Arvo', serif;
 }
 
 /*ARTIST*/
@@ -158,20 +158,65 @@ button:focus {
     background-color: #a6a6a6ad;
     color: #212121;
     vertical-align: middle;
-    width: 100%;
+    width: 80%;
     height: 100%;
     align-content: center;
     align-items: center;
-    padding: 0.1 0.2;
     font-weight: bold;
     font-size: 12px;
     border-radius: 1em;
+    z-index: 4;
+    padding-left: 4em;
+    transition: transform 0.6s;
+}
 
+
+.item-global-video {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    padding-top: 2em
+}
+
+.item-favorite{
+    order: 2;
+}
+
+.item-favorite > button{
+        margin : 1em 0;
+        border-radius: 1em;
+        width: 4.5em;
+        color: rgb(0, 0, 0);
+        background-color: rgba(252, 143, 0, 0.364);
+        border: 0.2em solid rgb(255, 174, 0);
+        transition: 300ms;
+
+    }
+
+.item-favorite > button:hover{
+        transform: scale(1.1);
+        box-shadow: 0em 1em rgba(177, 135, 57, 0.398);
+    
+    }
+
+.video-cover{
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 .music-video{
     text-align: center;
     justify-content: center;
-
+    width: 20em;
+    content: cover;
 }
 
+.music-global-video:hover .item-details-video {
+    -webkit-transform:  translateX(150px) ;
+	-moz-transform:  translateX(150px) ;
+	-ms-transform:  translateX(150px) ;
+	-o-transform:  translateX(150px) ;
+	transform:  translateX(150px) ;
+  }

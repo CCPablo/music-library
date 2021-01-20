@@ -1,0 +1,29 @@
+#container {
+    max-width: 1024px;
+    margin: auto;
+  }
+  
+  .music-video {
+      background: #000; 
+      position: relative;
+      border-top: 3px solid #888; 
+      margin: 5%;
+      padding: 2% 2% 4% 2%; 
+      border-radius: 10px; 
+      border-bottom-left-radius: 50% 2%; 
+      border-bottom-right-radius: 50% 2%; 
+      transition: margin-right 1s;
+  }
+  
+  .music-video:after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 3%;
+	left: 36%;
+	height: .5%; 
+	width: 28%;
+	background: #ddd; 
+	border-radius: 50%; 
+	box-shadow: 0 0 3px 0 white; 
+}

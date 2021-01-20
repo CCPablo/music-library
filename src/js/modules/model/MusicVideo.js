@@ -12,7 +12,7 @@ export class MusicVideo {
         this.itunesLink = track.trackViewUrl
     }
 
-    get html() {
+    get html () {
         return $('<div>').text(this.name)
     }
 }

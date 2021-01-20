@@ -1,0 +1,12 @@
+.display-wrapper > nav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.display-wrapper {
+    width: 50%;
+}
+
+.hidden {
+    display: none
+}

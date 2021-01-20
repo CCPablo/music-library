@@ -2,8 +2,11 @@ let $results = $('.results')
 let $countryFilter = $('#country-filter')
 
 export function renderResults (results) {
-    console.log({...results})
-    $results.html(results.map(result => result.html))
+    // console.log(results);
+    // console.log($results);
+    $results.html(results.map(result => {
+        return  result.html;
+    }))
 }
 
 export function renderContriesOptions (countryCodes) {

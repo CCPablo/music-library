@@ -10,11 +10,9 @@ export class Album {
         this.artistName = album.artistName
         this.releaseDate = new Date(album.releaseDate)
         this.genre = album.primaryGenreName
-<<<<<<< HEAD
         this.vinyl = new Lp(this.cover)
-=======
         this.topology = "Album"
->>>>>>> d7deff553ae51fbf4617c4d9352ac05b2767931d
+
     }
 
     get html() {
@@ -83,7 +81,7 @@ export class Album {
             .text('Genre: ' + this.genre)
             .css({
                 fontFamily: 'Helvetica, cursive',
-                textAlign: 'center'
+                textAlign: 'centre'
             })
     }
 
@@ -118,7 +116,6 @@ export class Album {
                     .text('Release: ' + this.releaseDate.getFullYear())
             )
             .append(this.htmlGenre)
-            
     }
 
     get htmlButtons() {

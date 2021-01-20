@@ -8,6 +8,7 @@ export class Album {
         this.artistName = album.artistName
         this.releaseDate = new Date(album.releaseDate)
         this.genre = album.primaryGenreName
+        this.topology = "Album"
     }
 
     get html() {

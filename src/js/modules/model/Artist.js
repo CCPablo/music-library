@@ -4,6 +4,7 @@ export class Artist {
         this.name = artist.artistName
         this.genre = artist.primaryGenreName
         this.itunesLink = artist.artistLinkUrl
+        this.topology = "Artist"
     }
 
     get html() {

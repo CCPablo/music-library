@@ -57,7 +57,7 @@
   }
   
   .flip-cover-back {
-    background-color: dodgerblue;
+    background-color: rgb(4, 3, 3);
     color: white;
     transform: rotateY(180deg);
   }

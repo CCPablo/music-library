@@ -13,6 +13,7 @@ export class Artist {
             .append(this.htmlTitle)
             .append(this.htmlGenre)
             .append(this.htmlArtistLink)
+            .append(this.htmlFavorite)
     }
 
     get htmlTitle () {
@@ -42,6 +43,15 @@ export class Artist {
         )
     }
     
+    get htmlFavorite() {
+        return $('<a>')
+            .addClass('item-favorite')
+            .on('click', function () {
+                //execute saving favorite
+            })
+            .attr('saved', false)
+            .append($('<button>').text('star'))
+    }
 
 
 

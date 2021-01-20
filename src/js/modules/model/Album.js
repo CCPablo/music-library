@@ -12,6 +12,10 @@ export class Album {
         this.genre = album.primaryGenreName
         this.vinyl = new Lp(this.cover)
         this.topology = "Album"
+<<<<<<< HEAD
+=======
+
+>>>>>>> videoInterface
     }
 
     get html() {
@@ -20,11 +24,12 @@ export class Album {
             .append(this.htmlTitle)
             .append(this.htmlCover)
             .append(this.htmlPrice)
+            .append(this.htmlFavorite)
     }
 
     get htmlTitle() {
-        return $('<h2>').addClass('item-title').text(this.name + ' album').css({
-            fontFamily: 'Helvetica, cursive',
+        return $('<h2>').addClass('item-title').text(this.name + ' (album)').css({
+            fontFamily: 'Helvetica, cursive'
         })
     }
 
@@ -79,6 +84,7 @@ export class Album {
             .text('Genre: ' + this.genre)
             .css({
                 fontFamily: 'Helvetica, cursive',
+                textAlign: 'centre'
             })
     }
 
@@ -113,7 +119,6 @@ export class Album {
                     .text('Release: ' + this.releaseDate.getFullYear())
             )
             .append(this.htmlGenre)
-            
     }
 
     get htmlButtons() {

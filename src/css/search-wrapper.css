@@ -1,5 +1,6 @@
 body {
     background: #333;
+    color: #dedede;
 }
 
 .search-wrapper{
@@ -23,6 +24,10 @@ body {
     padding: 24px;
 }
 
+.required-filters input{
+    margin-left: 20px;
+}
+
 .optional-filters{
     width: 100%;
     display: flex;
@@ -34,9 +39,8 @@ body {
     display: none !important;
 }
 
-
-
 /* Styles for the button */
+
 .button {
     max-width: 350px;
     min-width: 30%;
@@ -181,4 +185,8 @@ body {
   -webkit-appearance: button;
   appearance: button;
   outline: none;
+}
+
+input{
+    padding: 12px;
 }

@@ -17,8 +17,8 @@ export class Song {
         .addClass('item-global')
         .append(this.htmlTitle)
         .append(this.htmlCover)
-        .append(this.htmlPrice)
-        .append(this.htmlSample)
+        .append(this.htmlButtons)
+
 
         
     }
@@ -37,24 +37,28 @@ export class Song {
             .addClass('flip-cover')
             .css({
                 width: '10em',
-                height: '10em',
-                backgroundImage : 'url(' + this.cover + ')',
-                backgroundSize : 'cover'
-            }).append($('<div>')
+                height: '10em'
+                })
+            .append($('<div>')
                 .addClass('flip-cover-inner')
-                .append($('div')
+                .append($('<div>'))
                     .addClass('flip-cover-front')
-                    .append($('<img>')
-                        .attr('src', this.cover)
-                        )
-                    )
+                    .css({
+                    backgroundImage: 'url(' + this.cover + ')',
+                    backgroundSize : 'cover'
+                        })
+                .append($('<div>')
+                .addClass('vinyl')
+                )
                 .append($('<div>')
                     .addClass('flip-cover-back')
                     .append(this.htmlDetails)
                     )
-                )
-    }
+            )
 
+        }
+
+    
     get htmlPrice (){
         return $('<a>')
         .addClass('item-price')
@@ -101,6 +105,13 @@ export class Song {
                 .text( min + 'min ' + seconds + 's' )
             )            
         }
+    
+    get htmlButtons (){
+        return $('<div>').
+            addClass('item-buttons')
+            .append(this.htmlSample)
+            .append(this.htmlPrice)
+    }
 
     
 

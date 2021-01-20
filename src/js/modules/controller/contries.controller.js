@@ -11,7 +11,6 @@ export function requestCountryCodes () {
             'Postman-Token': '82911a1c-e641-4024-83d5-af9191dc20f7',
         },
     }
-
     $.ajax(settings).done(function (response) {
         renderContriesOptions(response)
     })

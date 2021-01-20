@@ -1,5 +1,9 @@
 import { search } from './modules/store/music.store.js'
+import { Vinyl } from './modules/components/Vinyl.js'
 import { requestCountryCodes } from './modules/controller/contries.controller.js'
+
+const vinyl = new Vinyl();
+$(document.body).append(vinyl.html);
 
 $(function () {
     requestCountryCodes();

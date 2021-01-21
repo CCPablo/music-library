@@ -33,6 +33,7 @@ export class Album {
     get htmlCover() {
         return $('<div>')
             .addClass('flip-cover')
+            .addClass('flip-cover-b')
             .css({
                 width: '10em',
                 height: '10em',
@@ -40,6 +41,7 @@ export class Album {
             .append(
                 $('<div>')
                     .addClass('flip-cover-inner')
+                    .addClass('flip-cover-inner-b')
                     .append(
                         $('<div>')
                             .addClass('flip-cover-front')

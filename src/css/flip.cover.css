@@ -31,11 +31,11 @@
     box-shadow: 0 7px 16px #aaa
   }
 
-  /*
-  .flip-cover:active .flip-cover-inner {
+
+  .flip-cover-b:active .flip-cover-inner-b {
     transform: rotateY(180deg);
   }
-  */
+
 
   .flip-cover:hover .vinyl-inside {
     -webkit-transform:  translateX(100px) rotate(195deg);

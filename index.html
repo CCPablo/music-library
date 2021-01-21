@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="./src/css/monitor.css">
     <link rel="stylesheet" href="./src/css/favorites.css">
     <link rel="stylesheet" href="./src/css/vinyl.css">
-
 </head>
 
 <body>
@@ -32,7 +31,6 @@
         <section class="search-wrapper">
             <form class="search">
                 <div class="required-filters">
-
                     <div class="box">
                         <select required id="entity" name="entity">
                             <option value="song">Canciones</option>
@@ -41,15 +39,12 @@
                             <option value="musicVideo">Videoclips</option>
                         </select>
                     </div>
-
                     <input required id="term" name="term" type="text" placeholder="ej: Plug in baby">
                 </div>
-
                 <div class='optional-filters hide-me'>
                     <div class="box">
                         <select name="country" id="country-filter"></select>
                     </div>
-
                     <div>
                         <div id="switch-wrapper" class="switch-wrapper">
                             <input type="checkbox" name="explicit" id="explicit-filter" class="switch-input" checked>
@@ -57,11 +52,9 @@
                         </div>
                         <label for="switch-wrapper">Explicit content</label>
                     </div>
-
                     <input type="number" name="limit" id="limit-filter" min="10" max="200" value="50">
                 </div>
             </form>
-
             <button id="add-filters-btn" class="button">
                 show filter
                 <div class="button__horizontal"></div>
@@ -91,12 +84,9 @@
                 <div class="favorites"></div>
             </section>
             <section class="player-wrapper">
-
             </section>
         </div>
-
     </main>
-
 </body>
 
 </html>

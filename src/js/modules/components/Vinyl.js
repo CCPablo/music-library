@@ -22,7 +22,36 @@ export class Vinyl extends Lp {
                     <path d="m399 199c-110.5 0-200 89.5-200 200s89.5 200 200 200 200-89.5 200-200-89.5-200-200-200zm-0.8 214.8c-8.6 0-15.5-6.9-15.5-15.5s6.9-15.5 15.5-15.5 15.5 6.9 15.5 15.5-6.9 15.5-15.5 15.5z" style="filter:url(#filter3183);stroke-width:.12834"/>
                 </g>
             </svg>
-        </div>`)
+        </div>`).droppable({
+            accept: '.vinyl',
+            drop: (event, ui) => {
+                let track = getResultById(ui.helper.data('id'))
+                if (!track) {
+                    track = getFavoriteById(ui.helper.data('id'))
+                }
+                this.setImage(track.cover)
+                this.htmlLp.removeClass('hidden')
+                this.setAudioTrack(track.audioSample)
+                this.millisDuration = 30000
+                this.play()
+            },
+            over: function (event, ui) {
+                ui.helper.animate(
+                    {
+                        opacity: 1,
+                    },
+                    200
+                )
+            },
+            out: function (event, ui) {
+                ui.helper.animate(
+                    {
+                        opacity: 0.4,
+                    },
+                    200
+                )
+            },
+        })
         this.playButton = $(`        
         <div class="player-button player-button-play">
             <svg class="play" x="0px" y="0px" viewBox="0 0 10 12" xml:space="preserve">
@@ -53,38 +82,7 @@ export class Vinyl extends Lp {
                 $('<div>')
                     .addClass('player')
                     .append(
-                        this.lpBase.droppable({
-                            accept: '.vinyl',
-                            drop: (event, ui) => {
-                                let track = getResultById(
-                                    ui.helper.data('id')
-                                )
-                                if(!track) {
-                                    track = getFavoriteById(ui.helper.data('id'))
-                                }
-                                this.setImage(track.cover)
-                                this.htmlLp.removeClass('hidden')
-                                this.setAudioTrack(track.audioSample)
-                                this.millisDuration = 30000
-                                this.play()
-                            },
-                            over: function (event, ui) {
-                                ui.helper.animate(
-                                    {
-                                        opacity: 1,
-                                    },
-                                    200
-                                )
-                            },
-                            out: function (event, ui) {
-                                ui.helper.animate(
-                                    {
-                                        opacity: 0.4,
-                                    },
-                                    200
-                                )
-                            },
-                        }),
+                        this.lpBase,
                         this.htmlLp.addClass('hidden'),
                         this.htmlTonearm,
                         this.buttons
@@ -97,10 +95,7 @@ export class Vinyl extends Lp {
             .append(
                 $('<source>')
                     .attr('type', 'audio/x-m4a')
-                    .attr(
-                        'src',
-                        'https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview114/v4/79/44/86/79448607-0518-0bbe-692e-35ce72e7c4a1/mzaf_7521654542653480071.plus.aac.p.m4a'
-                    )
+                    .attr('src', '')
             )
             .appendTo(this.html)
 
@@ -116,14 +111,6 @@ export class Vinyl extends Lp {
             .connect(this.audioCtx.destination)
 
         this.millisDuration = 0
-
-        this.states = {
-            paused: 'paused',
-            playing: 'playing',
-            stopped: 'stopped',
-        }
-
-        this.currentState = this.states.stopped
     }
 
     setAudioTrack (audioTrack) {
@@ -132,10 +119,17 @@ export class Vinyl extends Lp {
     }
 
     play () {
+        if (!this.audio.find('source').attr('src')) {
+            return
+        }
         this.audio[0].pause()
+        this.audio[0].currentTime = 0
+        if (this.htmlLp.css('animation-name') !== 'none') {
+            this.resolveLpAnimation()
+            this.stopRotation()
+        }
         this.resolveArmAnimation()
-        this.resolveLpAnimation()
-        this.rotate(0, 0, 'ease-in')
+
         this.initArm(() => {
             this.startRotation()
             this.audio[0].play()
@@ -147,13 +141,7 @@ export class Vinyl extends Lp {
     }
 
     pause () {
-        /*
-        this.audio[0].pause()
-        this.resolveArmAnimation()
-        this.resolveLpAnimation()
-        this.stopRotation()
-        this.paused = true
-        */
+
     }
 
     resume () {
@@ -170,9 +158,9 @@ export class Vinyl extends Lp {
         this.audio[0].currentTime = 0
         this.htmlLp.off('animationend')
         this.htmlTonearm.off('animationend')
-        if(this.htmlLp.css('animation-name') !== 'none') {
+        if (this.htmlLp.css('animation-name') !== 'none') {
             this.stopRotation()
-        } 
+        }
         this.resetArm()
     }
 
@@ -218,6 +206,7 @@ export class Vinyl extends Lp {
 
     setEmpty () {
         this.setImage('')
+        this.setAudioTrack('')
         this.htmlLp.addClass('hidden')
         this.stop()
     }

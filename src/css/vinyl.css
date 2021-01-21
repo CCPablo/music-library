@@ -14,7 +14,7 @@
     min-width: 340px;
     margin: 0 auto;
     border-radius: 20%;
-    border: 1px solid rgb(187, 39, 39);
+    border: 4px groove;
 }
 
 .player {

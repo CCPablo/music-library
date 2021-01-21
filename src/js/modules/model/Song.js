@@ -43,8 +43,20 @@ export class Song {
                 width: '10em',
                 height: '10em',
             })
+            .on('dblclick', function() {
+                if($(this).find('.flip-cover-inner').attr('front') !== 'false') {
+                    $(this).find('.flip-cover-inner').attr('front', false)
+                    $(this).find('.flip-cover-inner').css('transform', 'rotateY(180deg)')
+                    $(this).find('.vinyl-inside').css('transform', 'rotate(0) translate(0)')
+                } else {
+                    $(this).find('.flip-cover-inner').attr('front', true)
+                    $(this).find('.flip-cover-inner').css('transform', 'rotateY(0deg)')
+                    $(this).find('.vinyl-inside').css('transform', '')
+                }
+            })
             .append(
                 $('<div>')
+                    .attr('front', true)
                     .addClass('flip-cover-inner')
                     .append(
                         $('<div>')

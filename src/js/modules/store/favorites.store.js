@@ -26,6 +26,32 @@ export function getFavoriteById(id) {
     return favorites.find(fav => fav.id == id)
 }
 
+export function toggleFavourite (item) {
+    if (!isFavourite(item.id)) {
+        addFavourite(item)
+    } else {
+        removeFavourite(item)
+    }
+    localStorage.setItem('favorites', JSON.stringify(favorites.map(fav => {
+        const clone = {...fav}
+        delete clone['vinyl']
+        return clone
+    })))
+    renderResults(item.id)
+    renderFavorites(item.id)
+}
+
+function addFavourite (item) {
+    favorites.push(item)
+}
+
+function removeFavourite (item) {
+    favorites = favorites.filter(fav => fav.id !== item.id)
+}
+
+export function isFavourite (id) {
+    return !!favorites.find(favourite => favourite.id == id)
+}
 
 function reInstance (itemFromLS) {
     if (itemFromLS.type === 'Song') {
@@ -96,31 +122,4 @@ function convertMusicVideo (input) {
         previewUrl: input.videoSample,
         trackViewUrl: input.itunesLink,
     }
-}
-
-export function toggleFavourite (item) {
-    if (!isFavourite(item.id)) {
-        addFavourite(item)
-    } else {
-        removeFavourite(item)
-    }
-    localStorage.setItem('favorites', JSON.stringify(favorites.map(fav => {
-        const clone = {...fav}
-        delete clone['vinyl']
-        return clone
-    })))
-    renderResults(item.id)
-    renderFavorites(item.id)
-}
-
-function addFavourite (item) {
-    favorites.push(item)
-}
-
-function removeFavourite (item) {
-    favorites = favorites.filter(fav => fav.id !== item.id)
-}
-
-export function isFavourite (id) {
-    return !!favorites.find(favourite => favourite.id == id)
 }

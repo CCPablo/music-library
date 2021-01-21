@@ -132,10 +132,6 @@ export class Vinyl extends Lp {
     }
 
     play () {
-        if (this.paused) {
-            this.resume()
-            return
-        }
         this.audio[0].pause()
         this.resolveArmAnimation()
         this.resolveLpAnimation()
@@ -151,11 +147,13 @@ export class Vinyl extends Lp {
     }
 
     pause () {
+        /*
         this.audio[0].pause()
         this.resolveArmAnimation()
         this.resolveLpAnimation()
         this.stopRotation()
         this.paused = true
+        */
     }
 
     resume () {
@@ -172,7 +170,9 @@ export class Vinyl extends Lp {
         this.audio[0].currentTime = 0
         this.htmlLp.off('animationend')
         this.htmlTonearm.off('animationend')
-        this.stopRotation()
+        if(this.htmlLp.css('animation-name') !== 'none') {
+            this.stopRotation()
+        } 
         this.resetArm()
     }
 

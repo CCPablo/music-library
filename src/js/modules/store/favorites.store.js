@@ -2,21 +2,30 @@ import { Song } from '../model/Song.js'
 import { Album } from '../model/Album.js'
 import { Artist } from '../model/Artist.js'
 import { MusicVideo } from '../model/MusicVideo.js'
-import { renderResults } from '../view/render.js'
+import { renderFavorites, renderResults } from '../view/render.js'
 
-let favourites = []
+let favorites = []
 
 $(function () {
-    getFavouritesFromLS()
+    getFavoritesFromLS()
 })
 
-function getFavouritesFromLS () {
-    if (localStorage.getItem('favourites', favourites) != null) {
-        JSON.parse(localStorage.getItem('favourites')).map(function (element) {
-            favourites.push(reInstance(element))
+function getFavoritesFromLS () {
+    if (localStorage.getItem('favorites', favorites) != null) {
+        JSON.parse(localStorage.getItem('favorites')).map(function (element) {
+            favorites.push(reInstance(element))
         })
     }
 }
+
+export function getFavorites() {
+    return favorites
+}
+
+export function getFavoriteById(id) {
+    return favorites.find(fav => fav.id == id)
+}
+
 
 function reInstance (itemFromLS) {
     if (itemFromLS.type === 'Song') {
@@ -91,24 +100,27 @@ function convertMusicVideo (input) {
 
 export function toggleFavourite (item) {
     if (!isFavourite(item.id)) {
-        addFavourite({ ...item })
+        addFavourite(item)
     } else {
         removeFavourite(item)
     }
-    localStorage.setItem('favourites', JSON.stringify(favourites))
-    renderResults()
+    localStorage.setItem('favorites', JSON.stringify(favorites.map(fav => {
+        const clone = {...fav}
+        delete clone['vinyl']
+        return clone
+    })))
+    renderResults(item.id)
+    renderFavorites(item.id)
 }
 
 function addFavourite (item) {
-    console.log(item)
-    delete item['vinyl']
-    favourites.push(item)
+    favorites.push(item)
 }
 
 function removeFavourite (item) {
-    favourites = favourites.filter(fav => fav.id !== item.id)
+    favorites = favorites.filter(fav => fav.id !== item.id)
 }
 
 export function isFavourite (id) {
-    return !!favourites.find(favourite => favourite.id == id)
+    return !!favorites.find(favourite => favourite.id == id)
 }

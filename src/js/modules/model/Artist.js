@@ -1,3 +1,5 @@
+import { isFavourite, toggleFavourite } from "../store/favorites.store.js";
+
 export class Artist {
     constructor(artist) {
         this.id = artist.artistId;
@@ -13,6 +15,7 @@ export class Artist {
             .append(this.htmlTitle)
             .append(this.htmlGenre)
             .append(this.htmlArtistLink)
+            .append(this.htmlFavorite)
     }
 
     get htmlTitle () {
@@ -20,7 +23,7 @@ export class Artist {
             .addClass('item-title-artist')
             .text(this.name)
             .css({
-                fontFamily: '"Boogaloo", cursive',
+                fontFamily: 'Helvetica, cursive',
             })
     }
 
@@ -29,7 +32,7 @@ export class Artist {
             .addClass('item-genre')
             .text('Genre: ' + this.genre)
             .css({
-                fontFamily: '"Boogaloo", cursive',
+                fontFamily: 'Helvetica, cursive',
             })
     }
 
@@ -40,6 +43,24 @@ export class Artist {
         .append($('<button>')
             .text('Link to profile')
         )
+    }
+    
+    get htmlFavorite () {
+        return $('<div>')
+            .addClass('item-favorite')
+            .on('click', () => {
+                toggleFavourite(this)
+            })
+            .append(
+                $('<img>')
+                .attr('width', '25px')
+                .attr(
+                    'src',
+                    isFavourite(this.id)
+                        ? '/src/assets/images/star_fav_true.png'
+                        : '/src/assets/images/star_fav.png'
+                )
+            )
     }
 
 

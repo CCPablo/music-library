@@ -16,6 +16,12 @@
     justify-content: space-around;
 }
 
-.hidden {
-    display: none
+.button.active {
+    background-color: #e55743;
+    color:white;
 }
+
+.hidden {
+    display: none !important
+}
+

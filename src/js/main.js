@@ -1,14 +1,34 @@
 import { search } from './modules/store/music.store.js'
 import { Vinyl } from './modules/components/Vinyl.js'
 import { requestCountryCodes } from './modules/controller/contries.controller.js'
+import { renderFavorites } from './modules/view/render.js';
+import { setActive } from './modules/router/router.js';
 
 const vinyl = new Vinyl({
-    artworkUrl100: 'image',
-    audioSample: 'sample'
+    artworkUrl100: '',
+    audioSample: ''
 });
 
+let timer = null;
 
 $(function () {
+    renderFavorites()
+    setActive($('.results'))
+
+    $('.nav-results').on('click', function() {
+        $('.nav-favorites').removeClass('active')
+        $(this).addClass('active')
+        setActive($('.results'))
+        vinyl.setEmpty();
+    })
+
+    $('.nav-favorites').on('click', function() {
+        $('.nav-results').removeClass('active')
+        $(this).addClass('active')
+        setActive($('.favorites'))
+        vinyl.setEmpty();
+    })
+
     $('.player-wrapper').append(vinyl.html);
 
     requestCountryCodes();
@@ -16,13 +36,19 @@ $(function () {
 
     $("#add-filters-btn").on("click", showOptionalFilters)
 
-    searchForm.find('input, select').on('input', function(){
-        let searchSettings = {};
-        searchForm.find('input, select').each(function(){
-            searchSettings[$(this).attr('name')] = $(this).val()
-        });
-        setExplicit(searchSettings);
-        search(searchSettings)
+    searchForm.find('input, select').on('input', function() {
+        if(!$('input[name="term"]').val()) {
+            return
+        }
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            let searchSettings = {};
+            searchForm.find('input, select').each(function(){
+                searchSettings[$(this).attr('name')] = $(this).val()
+            });
+            setExplicit(searchSettings);
+            search(searchSettings)
+        }, 500)
     })
 
     function setExplicit (searchSettings) {

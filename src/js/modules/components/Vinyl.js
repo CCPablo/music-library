@@ -1,3 +1,4 @@
+import { getFavoriteById } from '../store/favorites.store.js'
 import { getResultById } from '../store/music.store.js'
 import { Lp } from './Lp.js'
 import { getCurrentRotation, setOriginTarget } from './util.js'
@@ -55,9 +56,12 @@ export class Vinyl extends Lp {
                         this.lpBase.droppable({
                             accept: '.vinyl',
                             drop: (event, ui) => {
-                                const track = getResultById(
+                                let track = getResultById(
                                     ui.helper.data('id')
                                 )
+                                if(!track) {
+                                    track = getFavoriteById(ui.helper.data('id'))
+                                }
                                 this.setImage(track.cover)
                                 this.htmlLp.removeClass('hidden')
                                 this.setAudioTrack(track.audioSample)
@@ -213,7 +217,9 @@ export class Vinyl extends Lp {
     }
 
     setEmpty () {
-        this.html.find('.player-element-lp').replaceWith(this.emptyLp)
+        this.setImage('')
+        this.htmlLp.addClass('hidden')
+        this.stop()
     }
 
     setTrack (track) {

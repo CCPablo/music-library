@@ -1,6 +1,7 @@
 import { Lp } from '../components/Lp.js'
-import { toggleFavourite } from '../store/favourites.store.js'
-import { isFavourite } from '../store/favourites.store.js'
+import { getCurrentRotation } from '../components/util.js'
+import { toggleFavourite } from '../store/favorites.store.js'
+import { isFavourite } from '../store/favorites.store.js'
 
 export class Song {
     constructor (track) {
@@ -31,7 +32,7 @@ export class Song {
             .addClass('item-title')
             .text(this.name)
             .css({
-                fontFamily: '"Boogaloo", cursive',
+                fontFamily: 'Helvetica, cursive',
             })
     }
 
@@ -59,19 +60,18 @@ export class Song {
                             .draggable({
                                 revert: 'invalid',
                                 opacity: '0.4',
-                                start: function (event, ui) {
-                                    ui.helper.css(
-                                        'transform',
-                                        'translate(18px, 18px)'
-                                    )
-                                },
                                 helper: () => {
-                                    console.log(this)
                                     return $(this.vinyl.htmlLp)
                                         .clone()
                                         .data('id', this.id)
                                         .removeClass('vinyl-inside')
                                         .css('transition', 'none')
+                                        .css(
+                                            'transform',
+                                            `translate(18px, 18px) rotateZ(${getCurrentRotation(
+                                                this.vinyl.htmlLp
+                                            )})`
+                                        )
                                 },
                                 cursor: 'move',
                             })
@@ -105,7 +105,6 @@ export class Song {
     }
 
     get htmlFavorite () {
-        console.log('eo')
         return $('<div>')
             .addClass('item-favorite')
             .on('click', () => {
@@ -113,13 +112,13 @@ export class Song {
             })
             .append(
                 $('<img>')
-                .attr('width', '25px')
-                .attr(
-                    'src',
-                    isFavourite(this.id)
-                        ? '/src/assets/images/star_fav_true.png'
-                        : '/src/assets/images/star_fav.png'
-                )
+                    .attr('width', '25px')
+                    .attr(
+                        'src',
+                        isFavourite(this.id)
+                            ? '/src/assets/images/star_fav_true.png'
+                            : '/src/assets/images/star_fav.png'
+                    )
             )
     }
 

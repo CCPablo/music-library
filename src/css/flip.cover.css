@@ -1,11 +1,11 @@
-.vinyl {
+.flip-cover .vinyl {
 	position:absolute;
 	height:100%;
 	width:100%;
-  padding: 0;
+  padding: 4px;
 }
 
-.vinyl-inside {
+.flip-cover .vinyl-inside {
 	z-index: -10;
 	-webkit-transition: all .25s ease-out;
   transition: all .25s ease-out;
@@ -60,7 +60,7 @@
   }
   
   .flip-cover-back {
-    background-color: dodgerblue;
+    background-color: rgb(4, 3, 3);
     color: white;
     transform: rotateY(180deg);
   }

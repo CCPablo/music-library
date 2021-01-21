@@ -5,9 +5,23 @@
     <meta charset="utf-8">
     <title>Music Library</title>
     <script src="https://kit.fontawesome.com/4f8800fac8.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"
+        type="text/javascript"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital@0;1&display=swap" rel="stylesheet">
     <script type="module" defer src="/src/js/main.js"></script>
     <script type="modules" defer src="/src/js/modules"></script>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/results.css">
+    <link rel="stylesheet" href="./src/css/flip.cover.css">
+    <link rel="stylesheet" href="./src/css/search-wrapper.css">
+    <link rel="stylesheet" href="./src/css/nav.css">
+    <link rel="stylesheet" href="./src/css/monitor.css">
+    <link rel="stylesheet" href="./src/css/favorites.css">
+    <link rel="stylesheet" href="./src/css/vinyl.css">
+
 </head>
 
 <body>
@@ -17,31 +31,72 @@
     <main class="content">
         <section class="search-wrapper">
             <form class="search">
-                <input required id="term" name="term" type="text">
-                <select required id="entity" name="entity">
-                    <option value="song">Canciones</option>
-                    <option value="album">Albumes</option>
-                    <option value="musicArtist">Artistas</option>
-                    <option value="musicVideo">Videoclips</option>
-                </select>
-                <div class='search-filters'>
-                    <select name="country" id="country-filter"></select>
-                    <input type = "checkbox" name="explicit" id="explicit-filter">
-                    <input type = "number" name="limit" id="limit-filter">
+                <div class="required-filters">
+
+                    <div class="box">
+                        <select required id="entity" name="entity">
+                            <option value="song">Canciones</option>
+                            <option value="album">Albumes</option>
+                            <option value="musicArtist">Artistas</option>
+                            <option value="musicVideo">Videoclips</option>
+                        </select>
+                    </div>
+
+                    <input required id="term" name="term" type="text" placeholder="ej: Plug in baby">
+                </div>
+
+                <div class='optional-filters hide-me'>
+                    <div class="box">
+                        <select name="country" id="country-filter"></select>
+                    </div>
+
+                    <div>
+                        <div id="switch-wrapper" class="switch-wrapper">
+                            <input type="checkbox" name="explicit" id="explicit-filter" class="switch-input" checked>
+                            <label for="explicit-filter" class="switch-label"></label>
+                        </div>
+                        <label for="switch-wrapper">Explicit content</label>
+                    </div>
+
+                    <input type="number" name="limit" id="limit-filter" min="10" max="200" value="50">
                 </div>
             </form>
+
+            <button id="add-filters-btn" class="button">
+                show filter
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+            </button>
+            <button id="hide-filters-btn" class="button hide-me">
+                hide filters
+                <div class="button__horizontal"></div>
+                <div class="button__vertical"></div>
+            </button>
         </section>
+        <div class="content-wrapper">
+            <section class="display-wrapper">
+                <nav>
+                    <div class="button nav-results">
+                        results
+                        <div class="button__horizontal"></div>
+                        <div class="button__vertical"></div>
+                    </div>
+                    <div class="button nav-favorites">
+                        favorites
+                        <div class="button__horizontal"></div>
+                        <div class="button__vertical"></div>
+                    </div>
+                </nav>
+                <div class="results"></div>
+                <div class="favorites"></div>
+            </section>
+            <section class="player-wrapper">
 
+            </section>
+        </div>
 
-        <section class="results">
-            <div class="result-item">
-                
-            </div>
-        </section>
-        <aside class="favorites">
-
-        </aside>
     </main>
+
 </body>
 
 </html>

@@ -1,0 +1,21 @@
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color:#fffefe;
+    color: #000000b5;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    color: #e55743;
+}
+
+button:focus { 
+    outline-style: none; 
+}
+
+* {
+    box-sizing: border-box;
+}

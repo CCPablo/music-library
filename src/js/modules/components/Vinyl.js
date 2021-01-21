@@ -25,6 +25,7 @@ export class Vinyl extends Lp {
         </div>`).droppable({
             accept: '.vinyl',
             drop: (event, ui) => {
+                this.audioCtx.resume()
                 let track = getResultById(ui.helper.data('id'))
                 if (!track) {
                     track = getFavoriteById(ui.helper.data('id'))

@@ -4,14 +4,16 @@ import { requestCountryCodes } from './modules/controller/contries.controller.js
 import { renderFavorites } from './modules/view/render.js';
 import { setActive } from './modules/router/router.js';
 
-const vinyl = new Vinyl({
-    artworkUrl100: '',
-    audioSample: ''
-});
+
 
 let timer = null;
 
 $(function () {
+    const vinyl = new Vinyl({
+        artworkUrl100: '',
+        audioSample: ''
+    });
+
     renderFavorites()
     setActive($('.results'))
 

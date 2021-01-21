@@ -77,3 +77,9 @@ function hideOptionalFilters () {
     $(".optional-filters").addClass("hide-me");
     $("#hide-filters-btn").addClass("hide-me");
 }
+
+document.querySelector('button').addEventListener('click', function() {
+    context.resume().then(() => {
+      console.log('Playback resumed successfully');
+    });
+  });
